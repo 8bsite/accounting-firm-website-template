@@ -12,26 +12,26 @@
 
 A one-page site for a small firm of accountants in Bristol: services, a month of work, clients, fixed fees, team, reviews and a booking form. Swiss and strict: black type on white hung on one hairline rule like a ledger, a turning sphere of client cards, a month drawn as a ruler with a red marker, and the brand's two halves meeting in the footer.
 
-Good for: accounting or bookkeeping firm; tax adviser or payroll bureau; small professional practice with fixed fees (lawyer, consultant, financial planner); any service business that wants a calm, typographic, black-and-white look. Free for personal and commercial use (MIT), made by [8B](https://8b.com/).
+Good for: accounting or bookkeeping firm; tax adviser or payroll bureau; small professional practice with fixed fees (lawyer, consultant, financial planner); any service business that wants a calm, typographic, black-and-white look.
 
-## Quick start
+## Use it with an AI coding agent
 
-Pick one:
+Download the files into your project (in Windows PowerShell type `curl.exe`):
 
-- **With an AI coding agent** (Claude Code, Codex, Cursor, Windsurf…). Download the files into your project (in Windows PowerShell type `curl.exe`):
-  ```bash
-  curl -LO https://raw.githubusercontent.com/8bsite/accounting-firm-website-template/main/index.html
-  curl -LO https://raw.githubusercontent.com/8bsite/accounting-firm-website-template/main/AGENTS.md
-  curl -LO https://raw.githubusercontent.com/8bsite/accounting-firm-website-template/main/LICENSE
-  curl -LO https://raw.githubusercontent.com/8bsite/accounting-firm-website-template/main/CREDITS.md
-  ```
-  Then give your agent this prompt:
-  ```text
-  Read AGENTS.md, then edit index.html. Use this template as the base for a website for <your firm: what you do (accounts, tax, payroll…), for whom, where, your fees, opening hours and how clients book a call>. Keep the layout, the motion and the single-file format; replace the brand name, copy, client list, team, reviews, prices, photos, links and contacts, adapt the UK tax terms to your country, and recolour it through the CSS variables if needed.
-  ```
-  Give the agent the downloaded file, not a link: an agent reads a link as a summary and would rebuild a different page.
-- **No code.** Download the ZIP, unzip it, replace the contacts and texts in `index.html`, put `index.html` into an empty folder and drag that folder onto [Netlify Drop](https://app.netlify.com/drop). The page is online in a minute.
-- **On GitHub.** Click **[Use this template](https://github.com/new?template_name=accounting-firm-website-template&template_owner=8bsite)** to get your own copy, then **Settings → Pages → Deploy from a branch → main**. Your site appears at `https://<you>.github.io/<repo>/`.
+```bash
+curl -LO https://raw.githubusercontent.com/8bsite/accounting-firm-website-template/main/index.html
+curl -LO https://raw.githubusercontent.com/8bsite/accounting-firm-website-template/main/AGENTS.md
+curl -LO https://raw.githubusercontent.com/8bsite/accounting-firm-website-template/main/LICENSE
+curl -LO https://raw.githubusercontent.com/8bsite/accounting-firm-website-template/main/CREDITS.md
+```
+
+Then give your agent this prompt:
+
+```text
+Read AGENTS.md, then edit index.html. Use this template as the base for a website for <your firm: what you do (accounts, tax, payroll…), for whom, where, your fees, opening hours and how clients book a call>. Keep the layout, the motion and the single-file format; replace the brand name, copy, client list, team, reviews, prices, photos, links and contacts, adapt the UK tax terms to your country, and recolour it through the CSS variables if needed.
+```
+
+Give the agent the downloaded file, not a link: from a link it would rebuild a different page. No agent? Click **[Use this template](https://github.com/new?template_name=accounting-firm-website-template&template_owner=8bsite)**, edit `index.html` and turn on **Settings → Pages**.
 
 ## What's on the page
 
@@ -49,43 +49,24 @@ Pick one:
 - **Book a free first call.** — opening hours set large in brackets with a small photo, phone, email, address and a call-booking form (placeholders)
 - **Footer** — tagline, links, call/email/map icons, the full-width wordmark in two halves, copyright and the Design: 8B credit
 
+## Design
+
+Palette: ![#ffffff](https://img.shields.io/badge/-%23ffffff-ffffff?style=flat-square) ![#0b0b0b](https://img.shields.io/badge/-%230b0b0b-0b0b0b?style=flat-square) ![#f2f2f2](https://img.shields.io/badge/-%23f2f2f2-f2f2f2?style=flat-square) ![#6b6b6b](https://img.shields.io/badge/-%236b6b6b-6b6b6b?style=flat-square) ![#8f8f8f](https://img.shields.io/badge/-%238f8f8f-8f8f8f?style=flat-square) ![#d12a1e](https://img.shields.io/badge/-%23d12a1e-d12a1e?style=flat-square) ![#dadada](https://img.shields.io/badge/-%23dadada-dadada?style=flat-square)  
+Fonts: Host Grotesk (Google Fonts). Change both through the CSS variables in the `:root` block at the top of `<head>`.
+
+- The spirit-level vial, the logo mark, the vertical rule and the rings in the switch section are CSS and SVG, not images: recolour them through the CSS variables.
+- Client cards sit on the sphere by their inline --lat and --lon angles. To add a card, give it its own pair (spread them evenly); a card without them sits on the pole on top of another.
+- The brand name is split in two halves in two places: the footer wordmark (.ft-a, .ft-b; its style="--len:8" is the number of characters of the whole word and sizes it to fill the width) and the grey corner halves (.ghost__a, .ghost__b). Split your name the same way, or put the whole name in the first half and leave the second empty.
+
 ## Before you publish
 
-- Replace everything marked `data-8b-placeholder` (social preview image, favicon, phone, email, form, map) and the invented demo facts — prices, dates, address. [AGENTS.md](AGENTS.md) lists them.
-- The contact form does not send anything yet: connect it to a form service (Formspree, Netlify Forms) or remove it; [AGENTS.md](AGENTS.md) shows both.
+- Replace everything marked `data-8b-placeholder` (social preview image, favicon, phone, email, form, map) and the invented demo facts: prices, dates, address. [AGENTS.md](AGENTS.md) lists them.
+- The form sends nothing yet: connect it to Formspree or Netlify Forms, or remove it.
 
-## Customize
+## Tech
 
-- **Colours and fonts**: CSS variables in the `:root` block at the top of `<head>`.
-- **Text**: edit it in place.
-- **Photos**: replace `src`, delete `srcset` and `sizes` (they list Unsplash sizes) and update the `alt` texts.
-- **Animations**: each section's animation is one `<script data-8b-part="scene:<id>">` block at the end of the file. For native scroll, delete the Lenis block in `page-init`.
-
-## For developers
-
-- **Stack.** HTML and CSS (custom properties, cascade layers) with GSAP 3.13.0, ScrollTrigger, Lenis 1.3.27 from jsDelivr. No build step, no framework, no npm. 86 KB.
-- **Layout of the file.** `<head>`: CSS variables, shared classes, then one style block per section. Then the markup, one element per section with a one-line comment above it. End of `<body>`: small behaviour scripts, the libraries, smooth scroll (`page-init`), the effects, one animation script per section.
-- **Browsers.** Chrome and Edge 108+, Safari 15.4+, Firefox 121+ (it uses :has(), cascade layers, small/dynamic viewport units).
-- **Accessibility.** Motion runs only when the visitor's system allows it; with "reduce motion" the page is complete and still. FAQ answers use native `<details>` and open without JavaScript. Every photo has alt text.
-- **External requests.** fonts.gstatic.com, images.unsplash.com, cdn.jsdelivr.net. No analytics, no cookies. To self-host everything (offline use, or Google Fonts and GDPR in the EU), download those files and change the URLs.
-- **Licences of the parts.** GSAP is free, commercial use included, under its own standard licence (not MIT); Lenis is MIT; fonts are SIL OFL; photos are under the Unsplash License. See [CREDITS.md](CREDITS.md).
-
-## FAQ
-
-**Can I use it for a client or a commercial site?** Yes. The code is MIT: use it, change it, sell the site you build with it.
-
-**Do I have to keep the "Design: 8B" link?** No. It is welcome, not required.
-
-**Can I use it in React, Next.js, Astro or Vue?** Yes. Move each section's markup and style block into a component and run its animation script in `useGSAP()` (React) or `onMounted` (Vue); start Lenis once. Or keep it as a separate static landing page next to your app (`example.com` for the landing, `app.example.com` for the app).
-
-**Why doesn't the contact form send?** It is a demo. Connect it to Formspree, Netlify Forms or your backend; AGENTS.md has the steps.
-
-**Where are the photos from?** Unsplash; they load from Unsplash's servers. Replace them with your own when you can.
-
-## More free templates
-
-[More 8B templates on GitHub](https://github.com/8bsite) · [8b.com](https://8b.com/)
+GSAP 3.13.0, ScrollTrigger, Lenis 1.3.27 from jsDelivr, 86 KB, no build step. Chrome and Edge 108+, Safari 15.4+, Firefox 121+ (it uses :has(), cascade layers, small/dynamic viewport units). With "reduce motion" on, the page is complete and still.
 
 ## License
 
-The template code is MIT licensed — see [LICENSE](LICENSE). Photos, fonts and libraries keep their own licences — see [CREDITS.md](CREDITS.md).
+MIT, see [LICENSE](LICENSE); the "Design: 8B" footer link is welcome, not required. Photos, fonts and libraries keep their own licences: [CREDITS.md](CREDITS.md). More free templates: [github.com/8bsite](https://github.com/8bsite).
